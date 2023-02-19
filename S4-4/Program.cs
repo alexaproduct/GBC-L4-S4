@@ -27,24 +27,23 @@ int[] arr = new int[k];
 FillMas(arr);
 PrintMas(arr);
 
-int inew = 0;
 int j = 0;
-int izero = 0;
 
-for (int i = 0; i < arr.Length; i++)
+while (arr[j] == 0)
+{
+    j++;
+}
+
+for (int i = j; i < arr.Length; i++)
 {
     if (arr[i] == 0)
     {
-        izero = izero + i;
-        Console.WriteLine(izero);
-        arr[j] = 0;
-        j = j + 1;
-        for (int y = 1; y <= izero; i++)
+        for (int y = i; y > j; y--)
         {
-            arr[y] = arr[y-1];
-            arr[izero] = arr[izero-1];
+            arr[y] = arr[y - 1];
         }
+        arr[j] = 0;
+        j += 1;
+        PrintMas(arr);
     }
-    Console.Write(arr[i] + " ");
-    PrintMas(arr);
 }
